@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class StocktickermanagerApplication {
 
 	public static void main(String[] args) {
+
 		SpringApplication.run(StocktickermanagerApplication.class, args);
 	}
 
