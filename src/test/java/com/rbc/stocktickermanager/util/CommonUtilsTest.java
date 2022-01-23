@@ -30,7 +30,7 @@ public class CommonUtilsTest {
         FileNotFoundException thrown =  Assertions.assertThrows(FileNotFoundException.class,
                 () -> CommonUtils.loadTradeDataList("test"));
         assertThat(thrown.getMessage(), containsString("No such file"));
-        assertThat(CommonUtils.loadTradeDataList(""), is(nullValue()));
+        assertThat(CommonUtils.loadTradeDataList("").isPresent(), is(false));
     }
 
     @Test
