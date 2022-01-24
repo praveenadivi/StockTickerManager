@@ -1,7 +1,6 @@
 package com.rbc.stocktickermanager.service;
 
 import com.rbc.stocktickermanager.entity.MetaData;
-import com.rbc.stocktickermanager.exception.StockTickerException;
 import com.rbc.stocktickermanager.repository.MetaDataRepository;
 
 import com.rbc.stocktickermanager.utils.CommonUtils;
@@ -10,11 +9,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.util.DigestUtils;
-import org.springframework.util.StringUtils;
-
-import java.io.IOException;
-import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Date;
@@ -30,7 +24,7 @@ public class MetaDataService {
     private MetaDataRepository metaDataRepository;
 
     @Transactional
-    public Optional<List<MetaData>> recordMetaData(String filePath) {
+    public Optional<MetaData> recordMetaData(String filePath) {
         try {
             String fileData = Files.readString(Path.of(filePath));
 
@@ -48,7 +42,7 @@ public class MetaDataService {
                 metaData.setInsertDate(new Date());
                 metaData.setMd5Hex(md5Sum.get());
 
-                List<MetaData> savedMetaData = (List<MetaData>) metaDataRepository.save(metaData);
+                MetaData savedMetaData = (MetaData) metaDataRepository.save(metaData);
                 return Optional.of(savedMetaData);
             } else {
                 LOG.debug("The file data was invalid");
@@ -99,11 +93,9 @@ public class MetaDataService {
         return Optional.empty();
     }
 
-    public MetaDataRepository getMetaDataRepository() {
-        return metaDataRepository;
-    }
 
-    public void setMetaDataRepository(MetaDataRepository metaDataRepository) {
-        this.metaDataRepository = metaDataRepository;
+    @Transactional
+    public void deleteAll() {
+        metaDataRepository.deleteAll();
     }
 }

@@ -3,8 +3,12 @@ package com.rbc.stocktickermanager.entity;
 import javax.persistence.*;
 import java.util.Date;
 
-@Entity
-@Table
+@Entity(name = "META_DATA")
+@Table(name = "META_DATA")
+@SequenceGenerator(
+        name = "META_DATE_DATA_SEQ_GEN",
+        sequenceName = "META_DATE_DATA_SEQ"
+)
 public class MetaData {
 
     @Column
@@ -15,7 +19,7 @@ public class MetaData {
     @Column(name = "file_path")
     private String filePath;
 
-    @Column
+    @Column(name= "md5_hex")
     private String md5Hex;
 
     @Column(name = "insert_date")

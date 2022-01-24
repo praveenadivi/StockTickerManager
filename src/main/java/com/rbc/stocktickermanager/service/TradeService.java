@@ -65,7 +65,7 @@ public class TradeService {
                         trades.get().stream()
                         .filter(trade -> !ObjectUtils.isEmpty(trade)).collect(Collectors.toList());
 
-                if (tradeList.isEmpty()) {
+                if (tradeList == null || tradeList.isEmpty() || tradeList.size() == 0) {
                     return Optional.empty();
                 } else {
 
@@ -84,4 +84,13 @@ public class TradeService {
         return Optional.empty();
     }
 
+    @Transactional
+    public List<Trade> findAll(){
+        return (List<Trade>) repository.findAll();
+    }
+
+    @Transactional
+    public void deleteAll() {
+        repository.deleteAll();
+    }
 }

@@ -10,8 +10,12 @@ import javax.persistence.*;
 import java.util.Date;
 import java.util.StringJoiner;
 
-@Entity
-@Table
+@Entity(name = "TRADE_DATA")
+@Table(name="TRADE_DATA")
+@SequenceGenerator(
+        name = "TRADE_DATA_SEQ_GEN",
+        sequenceName = "TRADE_DATA_SEQ"
+)
 public class Trade {
 
     @Id
@@ -20,74 +24,74 @@ public class Trade {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
-    @Column
+    @Column(nullable = true)
     @CsvBindByName(column = "quarter", required = false)
     private int quarter;
 
-    @Column
+    @Column(nullable = true)
     @CsvBindByName(column = "stock", required = false)
     private String stock;
 
-    @Column
+    @Column(nullable = true)
     @CsvBindByName(column = "date", required = false)
     @CsvDate("MM/dd/yyyy")
     private Date date;
 
-    @Column
+    @Column(nullable = true)
     @CsvBindByName(column = "open", required = false)
     @CsvNumber("'$'0.##")
     private double open;
 
-    @Column
+    @Column(nullable = true)
     @CsvBindByName(column = "high", required = false)
     @CsvNumber("'$'0.##")
     private double high;
 
-    @Column
+    @Column(nullable = true)
     @CsvBindByName(column = "low", required = false)
     @CsvNumber("'$'0.##")
     private double low;
 
-    @Column
+    @Column(nullable = true)
     @CsvBindByName(column = "close", required = false)
     @CsvNumber("'$'0.##")
     private double close;
 
-    @Column
+    @Column(nullable = true)
     @CsvBindByName(column = "volume", required = false)
     private long volume;
 
-    @Column(name = "percent_change_price")
+    @Column(name = "percent_change_price", nullable = true)
     @CsvBindByName(column = "percent_change_price", required = false)
     private double percentChangePrice;
 
-    @Column(name = "percent_change_volume_over_last_wk")
+    @Column(name = "percent_change_volume_over_last_wk", nullable = true)
     @CsvBindByName(column = "percent_change_volume_over_last_wk", required = false)
     private double percentChangeVolumeOverLastWk;
 
-    @Column(name = "previous_weeks_volume")
+    @Column(name = "previous_weeks_volume", nullable = true)
     @CsvBindByName(column = "previous_weeks_volume", required = false)
     private double previousWeeksVolume;
 
-    @Column(name = "next_weeks_open")
+    @Column(name = "next_weeks_open", nullable = true)
     @CsvBindByName(column = "next_weeks_open", required = false)
     @CsvNumber("'$'0.##")
     private double nextWeeksOpen;
 
-    @Column(name = "next_weeks_close")
+    @Column(name = "next_weeks_close", nullable = true)
     @CsvBindByName(column = "next_weeks_close", required = false)
     @CsvNumber("'$'0.##")
     private double nextWeeksClose;
 
-    @Column(name = "percent_change_next_weeks_price")
+    @Column(name = "percent_change_next_weeks_price",  nullable = true)
     @CsvBindByName(column = "percent_change_next_weeks_price", required = false)
     private double percentChangeNextWeeksPrice;
 
-    @Column(name = "days_to_next_dividend")
+    @Column(name = "days_to_next_dividend",  nullable = true)
     @CsvBindByName(column = "days_to_next_dividend", required = false)
     private int daysToNextDividend;
 
-    @Column(name = "percent_return_next_dividend")
+    @Column(name = "percent_return_next_dividend",  nullable = true)
     @CsvBindByName(column = "percent_return_next_dividend", required = false)
     private double percentReturnNextDividend;
 
