@@ -2,13 +2,13 @@ package com.rbc.stocktickermanager.service;
 
 import com.rbc.stocktickermanager.entity.MetaData;
 import com.rbc.stocktickermanager.repository.MetaDataRepository;
-
 import com.rbc.stocktickermanager.utils.CommonUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Date;

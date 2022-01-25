@@ -15,11 +15,14 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.*;
+import java.util.Collections;
+import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.*;
+import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.notNullValue;
 import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -56,7 +59,7 @@ public class TradeServiceTest {
     @Test
     public void testFindTradeByTickerSymbol_happy_path() throws FileNotFoundException {
         Optional<List<Trade>> tradeData
-                = CommonUtils.loadTradeDataList("src/test/resources/dow_jones_index.data");
+                = CommonUtils.loadTradeDataList(FILE_NAME);
         List<Trade> trades = tradeData.get().stream()
                 .filter(trade -> trade != null)
                 .filter(trade -> TEST_STOCK.equalsIgnoreCase(trade.getStock()))
@@ -98,7 +101,7 @@ public class TradeServiceTest {
     public void test_bulk_upload_ticker_happy_path() throws IOException {
 
         Optional<List<Trade>> tradeData
-                = CommonUtils.loadTradeDataList("src/test/resources/dow_jones_index.data");
+                = CommonUtils.loadTradeDataList(FILE_NAME);
 
         when(metaDataService.isDuplicate(ArgumentMatchers.any(String.class)))
                 .thenReturn(Optional.of(false));

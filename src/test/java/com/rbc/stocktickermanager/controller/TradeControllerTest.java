@@ -3,11 +3,8 @@ package com.rbc.stocktickermanager.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.rbc.stocktickermanager.entity.Trade;
-import com.rbc.stocktickermanager.repository.MetaDataRepository;
-import com.rbc.stocktickermanager.repository.TradeRepository;
 import com.rbc.stocktickermanager.service.MetaDataService;
 import com.rbc.stocktickermanager.service.TradeService;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;

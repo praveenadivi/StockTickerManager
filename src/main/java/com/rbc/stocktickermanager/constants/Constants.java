@@ -1,12 +1,6 @@
 package com.rbc.stocktickermanager.constants;
 
-import com.google.common.collect.ImmutableMap;
-
-import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
-import java.util.LinkedHashMap;
-import java.util.Locale;
-import java.util.Map;
 
 public class Constants {
     public static final String EMPTY = "";

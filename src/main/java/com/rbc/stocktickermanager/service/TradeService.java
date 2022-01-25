@@ -51,7 +51,7 @@ public class TradeService {
             return Optional.empty();
         }
 
-        return Optional.of(repository.findByStock(ticker));
+        return Optional.of(trades);
     }
 
     @Transactional

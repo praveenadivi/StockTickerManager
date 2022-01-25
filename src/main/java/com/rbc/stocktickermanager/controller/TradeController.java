@@ -8,10 +8,8 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
-import net.bytebuddy.build.Plugin;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -80,7 +78,7 @@ public class TradeController {
             "file data")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "The upload succeeded"),
-            @ApiResponse(responseCode = "406", description = "The file name provied was found to be empty or invalid."),
+            @ApiResponse(responseCode = "406", description = "The file name provided was found to be empty or invalid."),
             @ApiResponse(responseCode = "400", description = "The a duplicate file with the same content was found " +
                     "or the data has issues and failed during the upload")          ,
             @ApiResponse(responseCode = "422", description = "The file provided could not be found " +
@@ -109,7 +107,7 @@ public class TradeController {
     }
 
 
-    @Operation( summary= "")
+    @Operation( summary= "Get all the trades basing on a ticker symbol")
     @GetMapping("/ticker/{tickerSymbol}")
     @ResponseBody
     public ResponseEntity<Object> findATradesByTickerSymbol(
